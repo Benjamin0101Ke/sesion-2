@@ -11,7 +11,8 @@ import { EstudianteService } from './services/estudiantes';
 })
 export class App {
   titulo: string = 'Sistemas de Gestion Academica';
-idEditando: number | null = null;
+  idEditando: number | null = null;
+  textoBusqueda: string = '';
 
   private estudianteService = inject(EstudianteService);
   estudiantes = this.estudianteService.obtenerEstudiantes();

@@ -40,26 +40,29 @@
 
   <section class="contenido">
     <h2>Lista de Estudiantes</h2>
+    <input type="text" placeholder="Buscar por nombre..." [(ngModel)]="textoBusqueda">
 
     @if (estudiantes.length > 0) {
       @for (estudiante of estudiantes; track estudiante.id) {
-       <div class="tarjeta-estudiante"
-     [class.editando]="idEditando === estudiante.id">
-
-
-          <p><strong>Nombre:</strong> {{ estudiante.nombre }}</p>
-          <p><strong>Correo:</strong> {{ estudiante.correo }}</p>
-          <p><strong>Carrera:</strong> {{ estudiante.carrera }}</p>
-          <p><strong>Teléfono:</strong> {{ estudiante.telefono }}</p>
-
-          <button type="button" (click)="seleccionarParaEditar(estudiante)" style="background-color: #f59e0b;">
-            Editar
-          </button>
-
-          <button type="button" (click)="eliminar(estudiante.id)" style="background-color: #ef4444;">
-            Eliminar
-          </button>
-        </div>
+        @if (estudiante.nombre.toLowerCase().includes(textoBusqueda.toLowerCase())){
+         <div class="tarjeta-estudiante"
+       [class.editando]="idEditando === estudiante.id">
+          
+          
+            <p><strong>Nombre:</strong> {{ estudiante.nombre }}</p>
+            <p><strong>Correo:</strong> {{ estudiante.correo }}</p>
+            <p><strong>Carrera:</strong> {{ estudiante.carrera }}</p>
+            <p><strong>Teléfono:</strong> {{ estudiante.telefono }}</p>
+          
+            <button type="button" (click)="seleccionarParaEditar(estudiante)" style="background-color: #f59e0b;">
+              Editar
+            </button>
+          
+            <button type="button" (click)="eliminar(estudiante.id)" style="background-color: #ef4444;">
+              Eliminar
+            </button>
+          </div>          
+        }
       }
     } @else {
       <p>No hay estudiantes registrados.</p>
