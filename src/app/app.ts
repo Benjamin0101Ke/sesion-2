@@ -1,23 +1,27 @@
-
-import  {Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Estudiante } from './models/estudiante';
-//nuevas importaciones:
 import { FormsModule } from '@angular/forms';
 import { EstudianteService } from './services/estudiantes';
 
-@Component ({
+@Component({
   selector: 'app-root',
-  imports: [FormsModule],//añadimos el formsModule
+  imports: [FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App{
-  titulo : string = "Sistemas de Gestion Academica";
-  //modificamos todo el codigo que estaba acá
-private estudianteService = inject(EstudianteService);
+export class App {
+  titulo: string = 'Sistemas de Gestion Academica';
+
+  private estudianteService = inject(EstudianteService);
   estudiantes = this.estudianteService.obtenerEstudiantes();
-  
-  nuevoEstudiante: Estudiante = { id: 0, nombre: '', correo: '', carrera: '', telefono: '' };
+
+  nuevoEstudiante: Estudiante = {
+    id: 0,
+    nombre: '',
+    correo: '',
+    carrera: '',
+    telefono: ''
+  };
 
   guardarEstudiante() {
     if (this.nuevoEstudiante.id === 0) {
@@ -33,10 +37,20 @@ private estudianteService = inject(EstudianteService);
   }
 
   eliminar(id: number) {
+    if (!window.confirm('¿Quieres eliminar a este estudiante?')) {
+      return;
+    }
+
     this.estudianteService.eliminarEstudiante(id);
   }
 
   limpiarFormulario() {
-    this.nuevoEstudiante = { id: 0, nombre: '', correo: '', carrera: '', telefono: '' };
+    this.nuevoEstudiante = {
+      id: 0,
+      nombre: '',
+      correo: '',
+      carrera: '',
+      telefono: ''
+    };
   }
 }
