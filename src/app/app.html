@@ -39,7 +39,8 @@
   </section>
 
   <section class="contenido">
-    <h2>Lista de Estudiantes</h2>
+  <h2>Lista de Estudiantes</h2>
+  <p>Total de estudiantes registrados: {{ estudiantes.length }}</p>
 
     @if (estudiantes.length > 0) {
       @for (estudiante of estudiantes; track estudiante.id) {
