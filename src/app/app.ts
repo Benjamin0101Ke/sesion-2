@@ -11,6 +11,7 @@ import { EstudianteService } from './services/estudiantes';
 })
 export class App {
   titulo: string = 'Sistemas de Gestion Academica';
+idEditando: number | null = null;
 
   private estudianteService = inject(EstudianteService);
   estudiantes = this.estudianteService.obtenerEstudiantes();
@@ -33,8 +34,9 @@ export class App {
   }
 
   seleccionarParaEditar(estudiante: Estudiante) {
-    this.nuevoEstudiante = { ...estudiante };
-  }
+  this.nuevoEstudiante = { ...estudiante };
+  this.idEditando = estudiante.id;
+} //aleman
 
   eliminar(id: number) {
     if (!window.confirm('¿Quieres eliminar a este estudiante?')) {
@@ -52,5 +54,6 @@ export class App {
       carrera: '',
       telefono: ''
     };
+     this.idEditando = null;
   }
 }
