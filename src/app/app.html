@@ -40,7 +40,7 @@
 
   <section class="contenido">
     <h2>Lista de Estudiantes</h2>
-    <input type="text" placeholder="Buscar por nombre..." [(ngModel)]="textoBusqueda">
+    <input id="buscador" type="text" placeholder="Buscar por nombre..." [(ngModel)]="textoBusqueda">
 
     @if (estudiantes.length > 0) {
       @for (estudiante of estudiantes; track estudiante.id) {

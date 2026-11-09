@@ -11,6 +11,11 @@ padding: 25px;
 border-radius: 10px;
 }
 .contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  row-gap: 15px;
 margin-top: 25px;
 padding: 20px;
 background-color: #f1f5f9;
@@ -37,4 +42,24 @@ button[type="submit"] { background-color: #10b981; }
 .tarjeta-estudiante.editando {
   border: 3px solid #f59e0b;
   background-color: #fef3c7;
+}
+#buscador{
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #1e293b;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#buscador::placeholder {
+  color: #94a3b8;
+}
+#buscador:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
